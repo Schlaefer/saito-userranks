@@ -1,0 +1,26 @@
+{
+	"name": "schlaefer/saito-userranks",
+	"description": "user ranks for Saito forum",
+	"type": "cakephp-plugin",
+	"keywords": ["saito", "plugin"],
+	"homepage": "https://github.com/Schlaefer/saito-userranks",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Schlaefer",
+			"homepage": "http://siezi.com",
+			"role": "Author"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/Schlaefer/saito-userranks/issues",
+		"forum": "http://saito.siezi.com/forum/",
+		"source": "https://github.com/Schlaefer/saito-userranks"
+	},
+	"require": {
+    "composer/installers": "*"
+	},
+	"require-dev": {
+    "phpunit/phpunit": "3.7.*"
+	}
+}
