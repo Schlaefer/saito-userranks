@@ -8,7 +8,7 @@ Plugin for [Saito-Forum][saito]. Shows user rank based on number of postings in 
 
 ## Install ##
 
-Either clone/copy the files in this directory into `app/Plugin/Flattr` or using composer:
+Either clone/copy the files in this directory into `app/Plugin/Userranks` or using composer:
 
 ```json
 {
