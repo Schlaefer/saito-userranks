@@ -6,8 +6,7 @@
 	}
 
 	//= load plugin settings
-	App::uses('SaitoPlugin', 'Lib/Saito');
-	$settings = SaitoPlugin::loadConfig('Userranks');
+	$settings = Saito\Plugin::loadConfig('Userranks');
 
 	//= create Userranks class
 	App::uses('Userranks', 'Userranks.Lib');
