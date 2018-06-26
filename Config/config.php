@@ -1,11 +1,18 @@
 <?php
 
+declare(strict_types = 1);
+
 /**
- * plugin config
+ * Saito - The Threaded Web Forum
+ *
+ * @copyright Copyright (c) the Saito Project Developers 2014-2018
+ * @link https://github.com/Schlaefer/saito-userranks
+ * @license http://opensource.org/licenses/MIT
  */
-$config = [
+
+return [
     // plugin-name
-    'Userranks' => [
+    'Siezi/SaitoUserranks' => [
         'ranks' => [
             // treshold => title
             100 => 'Rookie', // 0-100 first entry starts from 0

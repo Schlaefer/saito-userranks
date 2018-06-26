@@ -1,6 +1,21 @@
 <?php
 
-App::uses('Userranks', 'Userranks.Lib');
+declare(strict_types = 1);
+
+/**
+ * Saito - The Threaded Web Forum
+ *
+ * @copyright Copyright (c) the Saito Project Developers 2014-2018
+ * @link https://github.com/Schlaefer/saito-userranks
+ * @license http://opensource.org/licenses/MIT
+ */
+
+namespace Siezi\SaitoUserranks;
+
+use Cake\Core\Configure;
+use Cake\I18n\I18n;
+use Cake\TestSuite\TestCase;
+use Siezi\SaitoUserranks\Lib\Userranks;
 
 class UserranksMock extends Userranks
 {
@@ -13,7 +28,7 @@ class UserranksMock extends Userranks
     }
 }
 
-class UserranksTest extends CakeTestCase
+class UserranksTest extends TestCase
 {
 
     public function testUserranksIOFormat()
@@ -61,13 +76,6 @@ class UserranksTest extends CakeTestCase
                 '100' => 'Jacob'
             ]
         ]);
-        $this->language = Configure::read('Config.language');
-        Configure::write('Config.language', 'eng');
-    }
-
-    public function tearDown()
-    {
-        unset($this->Userranks);
-        Configure::write('Config.language', $this->language);
+        I18n::setLocale('en');
     }
 }

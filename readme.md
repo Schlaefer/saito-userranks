@@ -8,26 +8,24 @@ Plugin for [Saito-Forum][saito]. Shows user rank based on number of postings in 
 
 ## Install ##
 
-Either clone/copy the files in this directory into `app/Plugin/Userranks` or using composer:
-
-```json
-{
-    "require": {
-        "schlaefer/saito-userranks": "*"
-    }
-}
+```bash
+composer require schlaefer/saito-userranks
 ```
 
-Activate plugin by including it in your `app/Config/saito_config.php`:
+Activate plugin:
 
 ```php
-CakePlugin::load('Userranks', ['bootstrap' => true]);
+bin/cake plugin load Siezi/SaitoUserranks
 ```
 
-Set your ranks in the plugin's `Config/config.php` or the global `app/Config/saito_config.php`.
+[See CakePHP plugin documentation for alternative methods](https://book.cakephp.org/3.0/en/plugins.html#loading-a-plugin).
+
+Set the ranks in your `config/saito_config.php`. See the plugins `config/config.php` for an example configuration.
 
 ## Test ##
 
+When installed as plugin:
+
 ```php
-app/Console/cake test Userranks Lib/Userranks
+vendor/bin/phpunit vendor/schlaefer/saito-userranks/tests/
 ```
