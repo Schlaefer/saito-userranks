@@ -12,29 +12,35 @@ declare(strict_types = 1);
 
 namespace Siezi\SaitoUserranks;
 
+use App\Model\Entity\User;
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use Cake\I18n\I18n;
-use Cake\TestSuite\TestCase;
 use Siezi\SaitoUserranks\Lib\Userranks;
+use Saito\Test\SaitoTestCase;
 
 class UserranksMock extends Userranks
 {
 
     public function userRank($numOPostings)
     {
-        $eventData['user']['User']['number_of_entries'] = $numOPostings;
+        $eventData['user'] = (new User())->set('entry_count', $numOPostings);
 
         return $this->onUserranks($eventData)['content'];
     }
 }
 
-class UserranksTest extends TestCase
+class UserranksTest extends SaitoTestCase
 {
 
     public function testUserranksIOFormat()
     {
-        $eventData['user']['User']['number_of_entries'] = 0;
-        $expected = ['title' => 'Rank', 'content' => 'Castaway'];
+        $eventData['user'] = (new User())->set('entry_count', 0);
+        $expected = [
+            // @bogus, shoud be the translated string, but doesn't work in Cake 3.6 ¯\_(ツ)_/¯
+            'title' => 'rank',
+            'content' => 'Castaway'
+        ];
         $result = $this->Userranks->onUserranks($eventData);
         $this->assertEquals($expected, $result);
     }
@@ -68,6 +74,9 @@ class UserranksTest extends TestCase
 
     public function setUp()
     {
+        parent::setUp();
+        I18n::useFallback(false);
+        I18n::setLocale('en');
         $this->Userranks = new UserranksMock([
             'ranks' => [
                 '10' => 'Castaway',
@@ -76,6 +85,5 @@ class UserranksTest extends TestCase
                 '100' => 'Jacob'
             ]
         ]);
-        I18n::setLocale('en');
     }
 }

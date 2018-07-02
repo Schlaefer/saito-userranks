@@ -53,18 +53,18 @@ class Userranks implements SaitoEventListener
      */
     public function onUserranks($eventData): array
     {
-        $user = $eventData['user'];
+        $nPostings = $eventData['user']->get('entry_count');
 
         foreach ($this->getConfig('ranks') as $treshold => $title) {
             $rank = $title;
-            if ($user['User']['number_of_entries'] <= $treshold) {
+            if ($nPostings <= $treshold) {
                 break;
             }
         }
 
         return [
             'title' => __d('siezi/saito_userranks', 'rank'),
-            'content' => $rank
+            'content' => h($rank),
         ];
     }
 }
